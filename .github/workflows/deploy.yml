@@ -1,10 +1,19 @@
 name: Deploy to WordPress.org
 
+concurrency:
+  group: deploy-to-wporg
+  cancel-in-progress: false
+
 on:
   push:
     tags:
       - '*'
   workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to deploy (defaults to 0.1.0)'
+        required: false
+        default: '0.1.0'
 
 jobs:
   deploy:
@@ -26,9 +35,24 @@ jobs:
           npm run build
           cd ..
 
+      - name: Determine Plugin Version
+        id: version_check
+        run: |
+          if [ -n "${{ inputs.version }}" ]; then
+            TAG_VER="${{ inputs.version }}"
+          elif [[ "${GITHUB_REF}" == refs/tags/* ]]; then
+            TAG_VER="${GITHUB_REF#refs/tags/}"
+          else
+            TAG_VER="0.1.0"
+          fi
+          TAG_VER="${TAG_VER#v}"
+          echo "deploy_version=${TAG_VER}" >> $GITHUB_OUTPUT
+          echo "Determined version: ${TAG_VER}"
+
       - name: WordPress Plugin Deploy
         uses: 10up/action-wordpress-plugin-deploy@stable
         env:
           SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
           SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
           SLUG: lunexia-live-feedback
+          VERSION: ${{ steps.version_check.outputs.deploy_version }}

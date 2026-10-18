@@ -10,6 +10,7 @@ scripts/
 build/
 release/
 wporg-assets/
+.wordpress-org/
 .DS_Store
 *.log
 npm-debug.log*
