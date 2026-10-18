@@ -1,0 +1,20 @@
+{
+  "name": "lunexia/lunexia-live-feedback",
+  "description": "Capture customer insights directly on your WordPress site with a sleek live feedback overlay and in-context review panel.",
+  "type": "wordpress-plugin",
+  "license": "GPL-2.0-or-later",
+  "authors": [
+    {
+      "name": "Lunexia IT",
+      "homepage": "https://lunexiait.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "LunexiaLiveFeedback\\": "src/"
+    }
+  }
+}

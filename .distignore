@@ -1,0 +1,33 @@
+# Build and development tools
+node_modules/
+admin/node_modules/
+.git/
+.github/
+.gitignore
+.distignore
+Makefile
+scripts/
+build/
+release/
+wporg-assets/
+.DS_Store
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Documentation & development notes
+tests/
+.editorconfig
+.eslintrc
+.prettierrc
+*.md
+
+# IDE and system files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.env
+.env.local

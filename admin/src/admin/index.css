@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-gray-50;
+  margin: 0;
+  padding: 0;
+}
+
+.lvf-admin-container {
+  @apply min-h-screen bg-white;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.lvf-sidebar {
+  @apply w-64 bg-slate-950 text-white flex-shrink-0;
+  position: relative;
+  align-self: stretch;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  border-right: 1px solid rgba(148, 163, 184, 0.15);
+  z-index: 10;
+}
+
+.lvf-main {
+  @apply flex-1 bg-gray-50;
+  margin: 0;
+}
+
+.lvf-card {
+  @apply bg-white rounded-lg shadow-md p-6;
+}
+
+.lvf-badge {
+  @apply inline-block px-3 py-1 rounded-full text-sm font-medium;
+}
+
+.lvf-badge-open {
+  @apply bg-blue-100 text-blue-800;
+}
+
+.lvf-badge-resolved {
+  @apply bg-green-100 text-green-800;
+}
+
+.lvf-badge-high {
+  @apply bg-red-100 text-red-800;
+}
+
+.lvf-badge-normal {
+  @apply bg-gray-100 text-gray-800;
+}
+
+.lvf-badge-low {
+  @apply bg-yellow-100 text-yellow-800;
+}
